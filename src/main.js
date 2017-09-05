@@ -15,7 +15,7 @@ import "../static/normalize.scss";
 const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
-      <Component/>
+	    { Component }
     </AppContainer>,
     document.getElementById('app')
   );

@@ -1,23 +1,36 @@
-import React, {Component} from "react";
-import classNames from "classnames";
-import style from "./style.scss";
+import {connect} from "react-redux";
+// import UI component
+import UI_Welcome from "./Welcome";
+// import actions
+import {DEMO} from "actions";
 
-export default class Welcome extends Component {
-	render() {
-		const classnames = classNames({
-			[style.box]: true,
-		});
-
-		return (
-			<div >
-				<div>Welcome</div>
-				<div>A</div>
-				<div>B</div>
-				<div>C</div>
-				<div>D</div>
-				<div>E</div>
-			</div>
-		)
+// mapStateToProps goes here
+function mapStateToProps(state) {
+	return {
+		value: state.counter.value
 	}
 }
 
+// mapDispatchToProps goes here
+function mapDispatchToProps(dispatch) {
+	return {
+		increase(){
+			dispatch(COUNTER_ACTIONS.increase())
+		},
+		decrease(){
+			dispatch(COUNTER_ACTIONS.decrease())
+		},
+		// async dispatch
+		increase_async(){
+			dispatch(COUNTER_ACTIONS.increase_async())
+		}
+	}
+}
+
+// build container-component
+const Welcome = connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(UI_Welcome);
+
+export default Welcome;

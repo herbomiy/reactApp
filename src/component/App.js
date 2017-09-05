@@ -14,13 +14,15 @@ export default class App extends Component {
 		let childs = React.Children.toArray(this.props.children);
 		return (
 			<div>
-				<h1>App</h1>
+				<h1>reactApp</h1>
 				<ul>
 					<li><Link to='/welcome'>Welcome</Link></li>
 					<li><Link to='/counter'>counter</Link></li>
 					<li><Link to="/demo">Demo</Link></li>
 				</ul>
-				{ childs }
+				<Route path="welcome">
+
+				</Route>
 			</div>
 		)
 	}

@@ -8,28 +8,23 @@
 // const Counter = (location, cb) => {require.ensure([], require => {cb(null, require('component/Counter').default)}, 'Counter')}
 
 
-import App from 'component/App'
-import Demo from 'component/Demo'
-import * as Welcome from 'component/Welcome'
-import * as Counter from 'component/Counter'
 import component from 'component'
 
 export default [
 	{
-		path: '*',
+		path: '/',
 		exact: true,
-		component: Welcome
+		component: component.App
+	}, {
+		path: '/demo',
+		exact: true,
+		component: component.Demo
+	}, {
+		path: '/welcome',
+		component: component.Welcome
+	}, {
+		path: '/counter',
+		exact:false,
+		component: component.Counter
 	}
-	// ,{
-	// 	path: '*',
-	// 	exact: true,
-	// 	component: Welcome
-	// }, {
-	// 	path: '/welcome',
-	// 	component: Welcome
-	// }, {
-	// 	path: '/counter',
-	// 	exact:false,
-	// 	component: Counter
-	// }
 ]

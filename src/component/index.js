@@ -1,8 +1,10 @@
-import * as Counter from 'component/Counter'
-import * as Demo from 'component/Demo'
-import * as Welcome from 'component/Welcome'
+import App from 'component/App'
+import Counter from 'component/Counter'
+import Demo from 'component/Demo'
+import Welcome from 'component/Welcome'
 
 export default {
+	App,
 	Counter,
 	Demo,
 	Welcome
