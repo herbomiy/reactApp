@@ -1,36 +1,31 @@
 import {connect} from "react-redux";
+import { withRouter } from "react-router-dom";
 // import UI component
 import UI_Demo from "./Demo";
 // import actions
-import {DEMO} from "actions";
+import {DEMO_ACTIONS} from "actions";
 
 // mapStateToProps goes here
 function mapStateToProps(state) {
 	return {
-		value: state.counter.value
+		value: state.demoInfo.value
 	}
 }
 
 // mapDispatchToProps goes here
 function mapDispatchToProps(dispatch) {
 	return {
-		increase(){
-			dispatch(COUNTER_ACTIONS.increase())
+		demoAdd(){
+			dispatch(DEMO_ACTIONS.demoAdd())
 		},
-		decrease(){
-			dispatch(COUNTER_ACTIONS.decrease())
+		demoDel(){
+			dispatch(DEMO_ACTIONS.demoDel())
 		},
 		// async dispatch
-		increase_async(){
-			dispatch(COUNTER_ACTIONS.increase_async())
+		demoDelAsync(){
+			dispatch(DEMO_ACTIONS.demoDelAsync())
 		}
 	}
 }
 
-// build container-component
-const Demo = connect(
-	mapStateToProps,
-	mapDispatchToProps,
-)(UI_Demo);
-
-export default Demo;
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UI_Demo));

@@ -8,21 +8,21 @@ export default class Demo extends Component {
 	}
 	componentDidMount() {
 		console.log('this.props = ', this.props)
-		let {increase_async} = this.props;
-		increase_async();
+		let {demoDelAsync} = this.props;
+		demoDelAsync();
 	}
 
 	render() {
-		const {value, user, increase, decrease, increase_async} = this.props;
+		const {value, user, demoAdd, demoDel, demoDelAsync} = this.props;
 		return (
 			<div>
 				<h2>Demo</h2>
 				<h2>{ value }</h2>
-				<button onClick={increase}>Increase</button>
+				<button onClick={demoAdd}>Increase</button>
 				<span dangerouslySetInnerHTML={{__html: "<-->"}}></span>
-				<button onClick={decrease}>Decrease</button>
+				<button onClick={demoDel}>Decrease</button>
 				<span dangerouslySetInnerHTML={{__html: "<-->"}}></span>
-				<button onClick={increase_async}>Increase_Async</button>
+				<button onClick={demoDelAsync}>Increase_Async</button>
 			</div>
 		)
 	}

@@ -12,6 +12,9 @@ const DEMO = {
 	},
 	demoDelAsync() {
 		console.log('DEMO_DEL_async = ', )
+		return {
+			type: "DEMO_DEL_ASYNC"
+		}
 	}
 }
 
