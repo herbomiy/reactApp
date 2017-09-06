@@ -20,9 +20,6 @@ export default class App extends Component {
 					<li><Link to='/counter'>counter</Link></li>
 					<li><Link to="/demo">Demo</Link></li>
 				</ul>
-				<Route path="welcome">
-
-				</Route>
 			</div>
 		)
 	}

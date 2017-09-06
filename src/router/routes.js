@@ -1,4 +1,3 @@
-
 // const App = (location, cb) => {require.ensure([], require => {cb(null, require('component/App').default)}, 'App')}
 
 // Demo
@@ -24,7 +23,7 @@ export default [
 		component: component.Welcome
 	}, {
 		path: '/counter',
-		exact:false,
+		exact: true,
 		component: component.Counter
 	}
 ]

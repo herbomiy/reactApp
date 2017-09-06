@@ -1,31 +1,72 @@
-import {connect} from "react-redux";
+import React, {Component} from "react";
 import { withRouter } from "react-router-dom";
-// import UI component
-import UI_Demo from "./Demo";
+import {connect} from "react-redux";
+import store from 'store';
 // import actions
 import {DEMO_ACTIONS} from "actions";
+
+class Demo extends Component {
+	constructor(props) {
+		super(props);
+		console.log('super props = ', props)
+		this.state = {
+			focused: false,
+			focused1: false,
+			hasError: false,
+			client: {
+				userPhone: '18301076802',
+				verificationCode: ''
+			},
+			visible: false
+		}
+	}
+	componentWillMount() {
+	}
+	componentDidMount() {
+		this.props.demoDelAsync();
+	}
+	render() {
+		const {value, demoAdd, demoDel, demoDelAsync} = this.props;
+		console.log('this.props = ', this)
+		console.log('this.state = ', this.state)
+		console.log('this.store = ', store.getState())
+		return (
+			<div>
+				<h2>Demo</h2>
+				<h2>{ value }</h2>
+				<h2>StoreValue: { store.getState().demoInfo.value }</h2>
+				<button onClick={demoAdd}>Increase</button>
+				<span dangerouslySetInnerHTML={{__html: "<-->"}}></span>
+				<button onClick={demoDel}>Decrease</button>
+				<span dangerouslySetInnerHTML={{__html: "<-->"}}></span>
+				<button onClick={demoDelAsync}>Increase_Async</button>
+			</div>
+		)
+	}
+}
 
 // mapStateToProps goes here
 function mapStateToProps(state) {
 	return {
-		value: state.demoInfo.value
+		state: {
+			value: state.demoInfo.value
+		}
 	}
 }
 
 // mapDispatchToProps goes here
 function mapDispatchToProps(dispatch) {
 	return {
-		demoAdd(){
+		demoAdd() {
 			dispatch(DEMO_ACTIONS.demoAdd())
 		},
-		demoDel(){
+		demoDel() {
 			dispatch(DEMO_ACTIONS.demoDel())
 		},
-		// async dispatch
 		demoDelAsync(){
 			dispatch(DEMO_ACTIONS.demoDelAsync())
 		}
 	}
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UI_Demo));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Demo));

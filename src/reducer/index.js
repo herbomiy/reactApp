@@ -6,17 +6,15 @@ import {
 } from 'redux'
 
 
-// demo
-import {
-	demoInfo,
-} from './client/demo'
-
+// client
+import client from './client/index'
+// worker
+import worker from './worker/index'
 const rootReducer = combineReducers({
 	routing,
 	config: (state = {}) => state,
-	demoInfo
-
-
+	...client,
+	...worker
 });
 
 export default rootReducer;
