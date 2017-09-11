@@ -2,10 +2,8 @@ const path = require("path")
 const webpack = require("webpack")
 const config = require("./config");
 const publicPath = config.publicPath;
-
 module.exports = function (env) {
 	console.log('__dirname = ', __dirname)
-	
 	return {
 		entry: {
 			main: path.resolve(__dirname, "../src/main.js"),
@@ -18,14 +16,16 @@ module.exports = function (env) {
 			publicPath
 		},
 		resolve: {
-			extensions: [".ts", ".js", ".jsx",".json"],
+			extensions: ['.web.js', ".ts", ".js", ".jsx",".json"],
 			modules: [path.join(__dirname, "../src"), "node_modules"],
 			alias: {
 				'actions': path.join(__dirname, "../src/actions"),
 				'component': path.join(__dirname, "../src/component"),
+				'page': path.join(__dirname, "../src/page"),
 				'reducer': path.join(__dirname, "../src/reducer"),
 				'router': path.join(__dirname, "../src/router"),
 				'store': path.join(__dirname, "../src/store"),
+				'assets': path.join(__dirname, "../src/assets"),
 				'utils': path.join(__dirname, "../src/utils"),
 			}
 		},
@@ -42,15 +42,39 @@ module.exports = function (env) {
 					exclude: "/node_modules/"
 				},
 				{
-					test: /\.scss$/,
-					use: ["style-loader", "css-loader?modules", "postcss-loader", "sass-loader"],
-					exclude: ["/node_modules/", path.resolve(__dirname, "../static")]
+					test: /\.css$/,
+					loader: 'css?sourceMap&modules&localIdentName=[local]___[hash:base64:5]!!',
+					exclude: /node_modules/
+				},
+				{
+					test: /\.css$/,
+					loader: 'style-loader!css-loader'
 				},
 				{
 					test: /\.scss$/,
-					use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
-					include: [path.resolve(__dirname, "../static")]
-				},
+					loader: 'style-loader!css-loader!sass-loader',
+					exclude: /node_modules/
+				}
+
+				// {
+				// 	test: /\.css$/,
+				// 	loader: 'css?sourceMap&modules&localIdentName=[local]___[hash:base64:5]!!',
+				// 	exclude: /node_modules/
+				// },
+				// {
+				// 	test: /\.css$/,
+				// 	use: ["style-loader", "css-loader?modules", "postcss-loader", "sass-loader"],
+				// },
+				// {
+				// 	test: /\.scss$/,
+				// 	use: ["style-loader", "css-loader?modules", "sass-loader"],
+				// 	exclude: ["/node_modules/", path.resolve(__dirname, "../static")]
+				// },
+				// {
+				// 	test: /\.scss$/,
+				// 	use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
+				// 	include: [path.resolve(__dirname, "../static")]
+				// },
 			],
 		},
 	}

@@ -1,17 +1,16 @@
 {
-	"presets":[
+	"presets": [
 		[
 			"es2015",
 			{
-				"modules":false
+				"modules": false
 			}
 		],
 		"react",
 		"stage-0"
 	],
-	"plugins":[
-	    "react-hot-loader/babel",
-	    [
+	"plugins": [
+		"react-hot-loader/babel",[
 			"transform-runtime",
 			{
 				"helpers": false,
@@ -19,6 +18,12 @@
 				"regenerator": true,
 				"moduleName": "babel-runtime"
 			}
+		],
+		[	"import",
+			{
+				"style": "css",
+				"libraryName": "antd-mobile"
+			}
 		]
-	],
+	]
 }

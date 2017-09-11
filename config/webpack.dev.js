@@ -28,7 +28,7 @@ module.exports = function (env) {
 			new OpenBrowserPlugin({url: "http://localhost:" + port}),
 			new webpack.LoaderOptionsPlugin({
 				options: {
-					postcss(){
+					postcss() {
 						return [precss, autoprefixer];
 					}
 				}

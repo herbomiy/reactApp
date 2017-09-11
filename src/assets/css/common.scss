@@ -1,9 +1,12 @@
 body {
 	background:#f4f4f4;
 }
+#app {
+	background: #fff;
+}
+
 
 .active {
-	background:blue;
 	display: inline-block;;
 	color:#fff;
 }

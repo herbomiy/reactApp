@@ -37,7 +37,7 @@ module.exports = function(env){
 							    "postcss-loader"
 							]
 						 }),
-					exclude: ["/node_modules/",path.resolve(__dirname,"../static")]
+					exclude: ["/node_modules/", path.resolve(__dirname,"../static")]
 				},
 				{ 
 					test: /\.s?css$/, 
@@ -49,7 +49,7 @@ module.exports = function(env){
 							    "postcss-loader"
 							]
 						 }),
-					include: [path.resolve(__dirname,"../static")]
+					include: [path.resolve(__dirname,"../src/assets/css")]
 				}
 			],
 		},

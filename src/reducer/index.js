@@ -10,11 +10,16 @@ import {
 import client from './client/index'
 // worker
 import worker from './worker/index'
+
+import home from './home'
+
+
 const rootReducer = combineReducers({
 	routing,
 	config: (state = {}) => state,
 	...client,
-	...worker
+	...worker,
+	home
 });
 
 export default rootReducer;
