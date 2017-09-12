@@ -15,18 +15,15 @@ class Home extends Component {
 		this.state = {
 			data: ['', '', ''],
 			initialHeight: 200,
-			dotStyle: {
-				'textAlign': 'center'
-			},
-			dotActiveStyle: {
-				'textAlign': 'center'
+			control: {
+				header : {
+					maxWidth: '100%'
+				}
 			}
 		}
 	}
-
 	componentWillMount() {
 	}
-
 	componentDidMount() {
 		// simulate img loading
 		setTimeout(() => {
@@ -42,25 +39,23 @@ class Home extends Component {
 			this.setState({
 				data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
 			});
-		}, 100);
+		}, 10);
 	}
 	render() {
 		const hProp = this.state.initialHeight ? {height: this.state.initialHeight} : {};
 		return (
 			<div>
-
 				<WingBlank>
-					<div className="sub-title">Home</div>
-
+					<div onClick={this.props.homeAdd}>AA</div>
+					<img src={require('assets/image/yuanyuan.jpg')} alt="" style={this.state.control.header}/>
 				</WingBlank>
 				<Carousel
 					className="my-carousel"
-					dots = {true}
-					infinite= {true}
+					dots = {false}
+					infinite = {true}
+					autoplay = {true}
 					selectedIndex={1}
-					swipeSpeed={50}
-					dotStyle = {this.state.dotStyle}
-					dotActiveStyle = {this.state.dotActiveStyle}
+					swipeSpeed={25}
 					beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
 					afterChange={index => console.log('slide to', index)}
 				>
@@ -98,8 +93,8 @@ function mapStateToProps(state) {
 // mapDispatchToProps goes here
 function mapDispatchToProps(dispatch) {
 	return {
-		demoAdd() {
-			dispatch(HOME_ACTIONS.demoAdd())
+		homeAdd() {
+			dispatch(HOME_ACTIONS.homeAdd())
 		}
 	}
 }

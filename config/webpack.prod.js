@@ -3,14 +3,18 @@ const webpack = require("webpack");
 const webpackMerge = require("webpack-merge");
 const ExtractTextPlugin = require("extract-text-webpack-plugin"); 
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+// old
 const autoprefixer = require("autoprefixer");
 const precss = require("precss");
+// new
+const pxtorem = require('postcss-pxtorem');
+
 const baseConfig = require("./webpack.base.js");
 const config = require("./config.js");
 const vendor = config.vendor;
 
-module.exports = function(env){
-	return webpackMerge(baseConfig(env),{
+module.exports = function(env) {
+	return webpackMerge(baseConfig(env), {
 		entry:{
 			main:path.resolve(__dirname,"../src/main.js"),
 			vendor,
@@ -89,12 +93,15 @@ module.exports = function(env){
 			}),
 			new webpack.LoaderOptionsPlugin({
 				options:{
-					postcss(){
-						return[precss, autoprefixer];
+					postcss() {
+						return pxtorem({
+							rootValue: 100,
+							propWhiteList: [],
+						})
 					},
 					sassLoader: {
-                        sourceMap: true
-                    },
+            sourceMap: true
+          },
 				}
 			})
 		]

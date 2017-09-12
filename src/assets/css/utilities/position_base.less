@@ -1,0 +1,53 @@
+//关于定位的基础样式
+.absolute (@top: auto, @right: auto, @bottom: auto, @left: auto, @index:3) {
+  position: absolute;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+  z-index: @index;
+}
+
+.fixed (@top: auto, @right: auto, @bottom: auto, @left: auto, @index: 3) {
+  position: fixed;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+  z-index: @index;
+}
+.relative (@top: auto, @right: auto, @bottom: auto, @left: auto) {
+  position: relative;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+}
+.abso-y-center{
+  .absolute(50%,auto,auto,auto,3);
+  transform: translateY(-50%);
+}
+.abso-x-center{
+  .absolute(auto,auto,auto,50%,3);
+  transform: translateX(-50%);
+}
+.abso-center{
+  .absolute(0,0,0,0,3);
+}
+.abso-bot{
+  .absolute(auto,0,0,0,3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

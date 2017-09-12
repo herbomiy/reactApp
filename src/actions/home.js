@@ -1,21 +1,21 @@
 import fetch from "isomorphic-fetch";
-const DEMO = {
-	demoAdd() {
+const HOME = {
+	homeAdd() {
 		return {
-			type: "DEMO_ADD"
+			type: "HOME_ADD"
 		}
 	},
-	demoDel() {
+	homeDel() {
 		return {
-			type: "DEMO_DEL"
+			type: "HOME_DEL"
 		}
 	},
-	demoDelAsync() {
-		console.log('DEMO_DEL_async = ', )
+	homeDelAsync() {
+		console.log('HOME_DEL_async = ', )
 		return {
-			type: "DEMO_DEL_ASYNC"
+			type: "HOME_DEL_ASYNC"
 		}
 	}
 }
 
-export default DEMO;
+export default HOME;

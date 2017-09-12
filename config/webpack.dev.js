@@ -2,8 +2,11 @@ const path = require("path");
 const webpack = require("webpack")
 const webpackMerge = require("webpack-merge");
 const OpenBrowserPlugin = require("open-browser-webpack-plugin");
-const autoprefixer = require("autoprefixer");
-const precss = require("precss");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const autoprefixer = require("autoprefixer");
+// const precss = require("precss");
+
+// const pxtorem = require('postcss-pxtorem')
 
 const baseConfig = require("./webpack.base.js");
 const config = require("./config");
@@ -28,10 +31,22 @@ module.exports = function (env) {
 			new OpenBrowserPlugin({url: "http://localhost:" + port}),
 			new webpack.LoaderOptionsPlugin({
 				options: {
-					postcss() {
-						return [precss, autoprefixer];
-					}
+					// postcss() {
+					// 	return pxtorem({
+					// 		rootValue: 100,
+					// 		propWhiteList: [],
+					// 	})
+					// }
+					// postcss() {
+					// 	return [precss, autoprefixer];
+					// }
 				}
+			}),
+			new HtmlWebpackPlugin({
+				filename: 'index.html',
+				template: path.join(__dirname, '../src/index.html'),
+				hash: true,
+				inject: true
 			})
 		],
 		devServer: {

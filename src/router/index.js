@@ -10,6 +10,22 @@ const browserHistory = createBrowserHistory()
 
 import routes from "./routes"
 
+// 按需加载路由
+import Bundle from './Bundle'
+
+const Loading = function () {
+	return <div className="txt-center">Loading...</div>
+};
+
+const createComponent = (component) => () => (
+	<Bundle load={component}>
+		{
+			Component => Component ? <Component/> : <Loading/>
+		}
+	</Bundle>
+);
+
+
 class ROOT extends Component {
 	render() {
 		return (
@@ -30,7 +46,7 @@ const RouteConfig = (
 							key={index}
 							path={route.path}
 							exact={route.exact}
-							component={route.component}
+							component={createComponent(route.component)}
 						/>
 					))
 				}

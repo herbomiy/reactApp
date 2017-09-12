@@ -13,9 +13,9 @@ import { AppContainer } from "react-hot-loader"
 import ROOT from "./router/index"
 
 // public styles go here
-import "assets/css/normalize.scss";
+import "assets/css/reset/normalize.scss";
 import "assets/css/common.scss";
-import "assets/css/reset.scss";
+import "assets/css/reset/reset.scss";
 
 
 const render = (Component) => {
