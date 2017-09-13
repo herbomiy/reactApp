@@ -50,7 +50,7 @@ const RouteConfig = (
 						/>
 					))
 				}
-				<Redirect from='' to=''/>
+				{/*<Redirect from='' to='/'/>*/}
 			</Switch>
 		</Router>
 	</Provider>

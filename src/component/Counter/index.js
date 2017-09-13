@@ -6,9 +6,8 @@ import UI_Counter from "./Counter";
 import { COUNTER_ACTIONS } from "../../actions";
 
 // mapStateToProps goes here
-function mapStateToProps(state){
-	return{
-		value:state.counter.value
+function mapStateToProps(state) {
+	return {
 	}
 }
 

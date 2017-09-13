@@ -31,12 +31,12 @@ module.exports = function (env) {
 			new OpenBrowserPlugin({url: "http://localhost:" + port}),
 			new webpack.LoaderOptionsPlugin({
 				options: {
-					// postcss() {
-					// 	return pxtorem({
-					// 		rootValue: 100,
-					// 		propWhiteList: [],
-					// 	})
-					// }
+					postcss() {
+						return pxtorem({
+							rootValue: 100,
+							propWhiteList: [],
+						})
+					}
 					// postcss() {
 					// 	return [precss, autoprefixer];
 					// }
@@ -53,6 +53,8 @@ module.exports = function (env) {
 			hot: true,
 			historyApiFallback: true,
 			port: config.port,
+			host: '0.0.0.0',
+			disableHostCheck: true
 		}
 	})
 }

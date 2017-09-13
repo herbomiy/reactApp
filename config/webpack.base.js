@@ -3,6 +3,12 @@ const webpack = require("webpack")
 const config = require("./config")
 const publicPath = config.publicPath;
 module.exports = function (env) {
+
+	//svg
+	const svgSpriteDirs = [
+		require.resolve('antd-mobile').replace(/warn\.js$/, ''), // antd-mobile 内置svg
+	];
+
 	return {
 		entry: {
 			main: path.resolve(__dirname, "../src/main.js"),
@@ -10,7 +16,7 @@ module.exports = function (env) {
 		output: {
 			path: path.resolve(__dirname, "../dist"),
 			sourceMapFilename: "[name].map",
-			filename: (env === "dev") ? "[name].js" : "[name].[hash:16].js",
+			filename: (env === "dev") ? "[name].js" : "[name].[hash:5].js",
 			chunkFilename: '[name].[chunkhash:5].js',
 			publicPath
 		},
@@ -28,7 +34,6 @@ module.exports = function (env) {
 				'utils': path.join(__dirname, "../src/utils"),
 			}
 		},
-
 		module: {
 			loaders: [
 				{
@@ -37,23 +42,29 @@ module.exports = function (env) {
 					exclude: "/node_modules/"
 				},
 				{
+					test: /\.svg$/,
+					loader: 'svg-sprite-loader',
+					include: svgSpriteDirs,
+				},
+				{
 					test: /\.(png|jpg|gif)$/,
 					use: ["url-loader?limit=2000&name=[name].[hash:5].[ext]"],
 					exclude: "/node_modules/"
 				},
+				// {
+				// 	test: /\.css$/,
+				// 	loader: 'css?sourceMap&modules&localIdentName=[local]___[hash:base64:5]!!',
+				// 	exclude: /node_modules/
+				// },
 				{
 					test: /\.css$/,
-					loader: 'css?sourceMap&modules&localIdentName=[local]___[hash:base64:5]!!',
-					exclude: /node_modules/
-				},
-				{
-					test: /\.css$/,
-					loader: 'style-loader!css-loader'
+					loader: 'style-loader!css-loader',
+					exclude: "/node_modules/"
 				},
 				{
 					test: /\.scss$/,
 					loader: 'style-loader!css-loader!sass-loader',
-					exclude: /node_modules/
+					exclude: "/node_modules/"
 				}
 
 				// {

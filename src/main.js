@@ -1,7 +1,7 @@
 import React,{ Component } from "react";
 import ReactDOM from "react-dom";
-import Es6Promise from "es6-promise";
-Es6Promise.polyfill()
+// import Es6Promise from "es6-promise";
+// Es6Promise.polyfill()
 
 if(!window.Promise) { // 引入 Promise 的 fallback 支持 (部分安卓手机不支持 Promise)
 	document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"'+'>'+'<'+'/'+'script>');
@@ -11,6 +11,9 @@ if(!window.Promise) { // 引入 Promise 的 fallback 支持 (部分安卓手机�
 // if you don't need hmr,you can remove this
 import { AppContainer } from "react-hot-loader"
 import ROOT from "./router/index"
+
+// 高清设置
+require('utils/antm-viewport/antm-viewport.min')
 
 // public styles go here
 import "assets/css/reset/normalize.scss";

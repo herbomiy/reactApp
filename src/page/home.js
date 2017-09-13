@@ -5,12 +5,12 @@ import store from 'store';
 // import actions
 import {HOME_ACTIONS} from "actions";
 
-import { Button } from 'antd-mobile';
 
-import { Carousel, WhiteSpace, WingBlank } from 'antd-mobile';
+import { Carousel, WhiteSpace, WingBlank, Button, Flex, Icon} from 'antd-mobile';
 
 class Home extends Component {
 	constructor(props) {
+		console.log('props = ', props)
 		super(props)
 		this.state = {
 			data: ['', '', ''],
@@ -42,11 +42,11 @@ class Home extends Component {
 		}, 10);
 	}
 	render() {
-		const hProp = this.state.initialHeight ? {height: this.state.initialHeight} : {};
 		return (
 			<div>
-				<WingBlank>
-					<div onClick={this.props.homeAdd}>AA</div>
+				<WingBlank className="txt-center">
+					<div onClick={this.props.homeAdd}><h4 className="txt-center">AA</h4></div>
+					<p style={{fontSize: '24px'}}>我是描述</p>
 					<img src={require('assets/image/yuanyuan.jpg')} alt="" style={this.state.control.header}/>
 				</WingBlank>
 				<Carousel
@@ -56,8 +56,6 @@ class Home extends Component {
 					autoplay = {true}
 					selectedIndex={1}
 					swipeSpeed={25}
-					beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-					afterChange={index => console.log('slide to', index)}
 				>
 					{this.state.data.map(ii => (
 						<a href="http://www.baidu.com" key={ii} style={hProp}>
@@ -75,11 +73,21 @@ class Home extends Component {
 						</a>
 					))}
 				</Carousel>
+				<WingBlank>
+					<Button type="primary"  inline size="small" onClick={ e => {this.props.history.push('/Demo')}}>primary Button</Button>
+					<Button type="ghost" inline size="small">primary Button</Button>
+					<Button type="primary" inline size="small">primary Button</Button>
+					<Icon type="check" size="md" color="gray" />
+					<h5>{setTimeout(() => console.log('w>h : ', document.documentElement.clientWidth, document.documentElement.clientHeight), 1002)}</h5>
+				</WingBlank>
+
+
+
 			</div>
 		);
+		const hProp = this.state.initialHeight ? {height: this.state.initialHeight} : {};
 	}
 }
-
 
 // mapStateToProps goes here
 function mapStateToProps(state) {

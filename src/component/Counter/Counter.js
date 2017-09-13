@@ -1,7 +1,10 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
 
 export default class Counter extends Component {
+	constructor(props) {
+		super(props)
+	}
+
 	componentDidMount() {
 		console.log('this.props = ', this.props)
 		let {increase_async} = this.props;
@@ -9,11 +12,10 @@ export default class Counter extends Component {
 	}
 
 	render() {
-		const {value, user, increase, decrease, increase_async} = this.props;
+		const {increase, decrease, increase_async} = this.props;
 		return (
 			<div>
 				<h2>Counter</h2>
-				<h2>{ value }</h2>
 				<button onClick={increase}>Increase</button>
 				<span dangerouslySetInnerHTML={{__html: "<-->"}}></span>
 				<button onClick={decrease}>Decrease</button>
@@ -22,11 +24,4 @@ export default class Counter extends Component {
 			</div>
 		)
 	}
-}
-
-Counter.propTypes = {
-	value: PropTypes.number.isRequired,
-	increase: PropTypes.func.isRequired,
-	decrease: PropTypes.func.isRequired,
-	increase_async: PropTypes.func.isRequired,
 }

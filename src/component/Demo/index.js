@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import store from 'store';
 // import actions
 import {DEMO_ACTIONS} from "actions";
-
+// import { WhiteSpace} from 'antd-mobile';
 class Demo extends Component {
 	constructor(props) {
 		super(props);
@@ -32,6 +32,7 @@ class Demo extends Component {
 		console.log('this.store = ', store.getState())
 		return (
 			<div>
+				{/*<WhiteSpace></WhiteSpace>*/}
 				<h2>Demo</h2>
 				<h2>{ value }</h2>
 				<h2>StoreValue: { store.getState().demoInfo.value }</h2>
@@ -40,6 +41,8 @@ class Demo extends Component {
 				<button onClick={demoDel}>Decrease</button>
 				<span dangerouslySetInnerHTML={{__html: "<-->"}}></span>
 				<button onClick={demoDelAsync}>Increase_Async</button>
+				<button onClick={e => this.props.history.push('/counter')}>goCounter</button>
+				<h5>{console.log(document.documentElement.clientWidth)}</h5>
 			</div>
 		)
 	}
