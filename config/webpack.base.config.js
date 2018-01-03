@@ -24,12 +24,12 @@ module.exports = function (env) {
 			extensions: ['.web.js', ".ts", ".js", ".jsx",".json"],
 			modules: [path.join(__dirname, "../src"), "node_modules"],
 			alias: {
-				'actions': path.join(__dirname, "../src/actions"),
+				'actions': path.join(__dirname, "../src/redux/actions"),
 				'component': path.join(__dirname, "../src/component"),
 				'page': path.join(__dirname, "../src/page"),
-				'reducer': path.join(__dirname, "../src/reducer"),
+				'reducer': path.join(__dirname, "../src/redux/reducers"),
 				'router': path.join(__dirname, "../src/router"),
-				'store': path.join(__dirname, "../src/store"),
+				'store': path.join(__dirname, "../src/redux/store"),
 				'assets': path.join(__dirname, "../src/assets"),
 				'utils': path.join(__dirname, "../src/utils"),
 			}

@@ -47,6 +47,7 @@ jspm_packages
 #vscode
 .vscode
 /.idea/
+/node_modules
 
 #eslint
 .eslintcache

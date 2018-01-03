@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // const pxtorem = require('postcss-pxtorem')
 
-const baseConfig = require("./webpack.base.js");
+const baseConfig = require("./webpack.base.config.js");
 const config = require("./config");
 const port = config.port;
 

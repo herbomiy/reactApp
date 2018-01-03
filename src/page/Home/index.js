@@ -74,7 +74,7 @@ class Home extends Component {
 					))}
 				</Carousel>
 				<WingBlank>
-					<Button type="primary"  inline size="small" onClick={ e => {this.props.history.push('/Demo')}}>primary Button</Button>
+					<Button type="primary"  inline size="small" onClick={ e => {this.props.history.push('/demo')}}>primary Button</Button>
 					<Button type="ghost" inline size="small">primary Button</Button>
 					<Button type="primary" inline size="small">primary Button</Button>
 					<Icon type="check" size="md" color="gray" />
@@ -93,7 +93,7 @@ class Home extends Component {
 function mapStateToProps(state) {
 	return {
 		state: {
-			value: state.demoInfo.value
+			value: state.demoState.value
 		}
 	}
 }

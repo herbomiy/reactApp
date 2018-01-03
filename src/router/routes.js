@@ -12,7 +12,7 @@ export default [
 	}, {
 		path: '/demo',
 		exact: true,
-		component: component.Demo
+		component: page.Demo
 	}, {
 		path: '/welcome',
 		component: component.Welcome

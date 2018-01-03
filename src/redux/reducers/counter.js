@@ -1,5 +1,5 @@
 export default function count(state = {
-	value:0,
+	value: 0,
 },action) {
 	switch(action.type) {
 		case "INCREASE":

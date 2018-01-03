@@ -1,5 +1,6 @@
 import React,{ Component } from "react";
 import ReactDOM from "react-dom";
+import { createStore } from 'redux';
 // import Es6Promise from "es6-promise";
 // Es6Promise.polyfill()
 
@@ -20,6 +21,9 @@ import "assets/css/reset/normalize.scss";
 import "assets/css/common.scss";
 import "assets/css/reset/reset.scss";
 
+if (module.hot) {
+	module.hot.accept();
+}
 
 const render = (Component) => {
   ReactDOM.render(

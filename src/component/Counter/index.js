@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 // import UI component
 import UI_Counter from "./Counter";
 // import actions
-import { COUNTER_ACTIONS } from "../../actions";
+import { COUNTER_ACTIONS } from "../../redux/actions";
 
 // mapStateToProps goes here
 function mapStateToProps(state) {

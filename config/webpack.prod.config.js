@@ -10,7 +10,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 // new
 const pxtorem = require('postcss-pxtorem');
 
-const baseConfig = require("./webpack.base.js");
+const baseConfig = require("./webpack.base.config.js");
 const config = require("./config.js");
 const vendor = config.vendor;
 

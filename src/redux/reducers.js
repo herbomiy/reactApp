@@ -6,20 +6,16 @@ import {
 } from 'redux'
 
 
-// client
-import client from './client/index'
-// worker
-import worker from './worker/index'
-
-import home from './home'
-
+import home from './reducers/home'
+import counter from './reducers/counter'
+import demoState from './reducers/demo'
 
 const rootReducer = combineReducers({
 	routing,
 	config: (state = {}) => state,
-	...client,
-	...worker,
-	home
+	home,
+	demoState,
+	counter
 });
 
 export default rootReducer;
