@@ -16,8 +16,8 @@ module.exports = function (env) {
 		output: {
 			path: path.resolve(__dirname, "../dist"),
 			sourceMapFilename: "[name].map",
-			filename: (env === "dev") ? "[name].js" : "[name].[hash:5].js",
-			chunkFilename: '[name].[chunkhash:5].js',
+			filename: (env === "dev") ? "[name].js" : "static/js/[name].[hash:5].js",
+			chunkFilename: (env === "dev") ? '[name].js' : 'static/js/[name].[chunkhash:5].js',
 			publicPath
 		},
 		resolve: {
@@ -48,7 +48,7 @@ module.exports = function (env) {
 				},
 				{
 					test: /\.(png|jpg|gif)$/,
-					use: ["url-loader?limit=2000&name=[name].[hash:5].[ext]"],
+					use: ['url-loader?limit=2000&name=static/img/[name].[hash:5].[ext]'],
 					exclude: "/node_modules/"
 				},
 				// {

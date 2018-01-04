@@ -86,11 +86,14 @@ module.exports = function(env) {
 				},
 			}),
 			new ExtractTextPlugin({
-				filename:"style.[contenthash:5].css",
+				filename:"css/style.[contenthash:5].css",
 				disable:false,
 				allChunks:true,
 			}),
 			new HTMLWebpackPlugin({
+				filename: process.env.NODE_ENV === 'dev' // 执行编译后文件路径
+					? 'index.html'
+					: 'index.html',
 				template:"src/index.html"
 			}),
 			new webpack.optimize.CommonsChunkPlugin({
@@ -98,7 +101,7 @@ module.exports = function(env) {
     		}),
     		new webpack.DefinePlugin({
 				"process.env": { 
-					NODE_ENV: JSON.stringify("production") 
+					NODE_ENV: JSON.stringify("production")
 				}
 			}),
 			new webpack.LoaderOptionsPlugin({
