@@ -16,8 +16,8 @@ module.exports = function (env) {
 		output: {
 			path: path.resolve(__dirname, "../dist"),
 			sourceMapFilename: "[name].map",
-			filename: (env === "dev") ? "[name].js" : "static/js/[name].[hash:5].js",
-			chunkFilename: (env === "dev") ? '[name].js' : 'static/js/[name].[chunkhash:5].js',
+			filename: "[name].js",
+			chunkFilename: '[name].js',
 			publicPath
 		},
 		resolve: {

@@ -25,6 +25,10 @@ module.exports = function(env) {
 			main:path.resolve(__dirname,"../src/main.js"),
 			vendor,
 		},
+		output: {
+			filename: "static/js/[name].[chunkhash:5].js",
+			chunkFilename: 'static/js/[name].[chunkhash:5].js',
+		},
 		module: {
 			loaders: [
         // {
@@ -68,7 +72,8 @@ module.exports = function(env) {
       ],
 		},
 		plugins:[
-			new webpack.optimize.UglifyJsPlugin({
+			new webpack.HashedModuleIdsPlugin(), // 优化缓存 - 代码修改后 - vendor, 等不变值
+			new webpack.optimize.UglifyJsPlugin({ // 代码压缩
 				compress: {
 					warnings: false,
 					screw_ie8: true,
@@ -97,7 +102,7 @@ module.exports = function(env) {
 				template:"src/index.html"
 			}),
 			new webpack.optimize.CommonsChunkPlugin({
-        		name: ["vendor", "manifest"]
+        		name: ['vendor', 'manifest', 'runtime']
     		}),
     		new webpack.DefinePlugin({
 				"process.env": { 
