@@ -4,7 +4,7 @@ const webpackMerge = require("webpack-merge");
 const ExtractTextPlugin = require("extract-text-webpack-plugin"); 
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 // old
-// const autoprefixer = require("autoprefixer");
+const autoprefixer = require("autoprefixer");
 // const precss = require("precss");
 
 // new
@@ -72,7 +72,7 @@ module.exports = function(env) {
       ],
 		},
 		plugins:[
-			new webpack.HashedModuleIdsPlugin(), // 优化缓存 - 代码修改后 - vendor, 等不变值
+			new webpack.HashedModuleIdsPlugin(), // 优化缓存 - vendor
 			new webpack.optimize.UglifyJsPlugin({ // 代码压缩
 				compress: {
 					warnings: false,
@@ -110,16 +110,15 @@ module.exports = function(env) {
 				}
 			}),
 			new webpack.LoaderOptionsPlugin({
-				options:{
-					postcss() {
-						return pxtorem({
-							rootValue: 100,
-							propWhiteList: [],
-						})
+				options: {
+					postcss: function () {
+						return [autoprefixer]; // precss,
 					},
-					sassLoader: {
-            sourceMap: true
-          },
+					devServer: {
+						contentBase: "./", //本地服务器所加载的页面所在的目录
+						historyApiFallback: true, //不跳转
+						inline: true //实时刷新
+					}
 				}
 			})
 		]

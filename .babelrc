@@ -21,8 +21,8 @@
 		],
 		[	"import",
 			{
-				"style": "css",
-				"libraryName": "antd-mobile"
+				"libraryName": "antd-mobile",
+				"style": "css"
 			}
 		]
 	]

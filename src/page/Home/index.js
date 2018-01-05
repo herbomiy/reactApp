@@ -45,8 +45,14 @@ class Home extends Component {
 		return (
 			<div>
 				<WingBlank className="txt-center">
-					<div onClick={this.props.homeAdd}><h4 className="txt-center">AA</h4></div>
-					<p style={{fontSize: '24px'}}>我是描述</p>
+					<div onClick={this.props.homeAdd}><h4 className="txt-center red">AA</h4></div>
+					<p style={{fontSize: '24px'}}>我是描述1</p>
+					<p style={{fontSize: '24px'}}>我是描述1</p>
+					<p style={{fontSize: '24px'}}>我是描述1</p>
+					<p style={{fontSize: '24px'}}>我是描述1</p>
+					<p style={{fontSize: '24px'}}>我是描述1</p>
+					<p style={{fontSize: '24px'}}>我是描述1</p>
+					<p style={{fontSize: '24px'}}>我是描述1</p>
 					<img src={require('assets/image/yuanyuan.jpg')} alt="" style={this.state.control.header}/>
 				</WingBlank>
 				<Carousel

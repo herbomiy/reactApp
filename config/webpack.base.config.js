@@ -1,3 +1,4 @@
+var autoprefixer = require('autoprefixer')
 const path = require("path")
 const webpack = require("webpack")
 const config = require("./config")
@@ -22,7 +23,7 @@ module.exports = function (env) {
 		},
 		resolve: {
 			extensions: ['.web.js', ".ts", ".js", ".jsx",".json"],
-			modules: [path.join(__dirname, "../src"), "node_modules"],
+			// modules: [path.join(__dirname, "../src"), "node_modules"],
 			alias: {
 				'actions': path.join(__dirname, "../src/redux/actions"),
 				'component': path.join(__dirname, "../src/component"),
@@ -39,7 +40,7 @@ module.exports = function (env) {
 				{
 					test: /\.(js|jsx)?$/,
 					use: ['babel-loader?cacheDirectory=true'],
-					exclude: "/node_modules/"
+					exclude: /node_modules/
 				},
 				{
 					test: /\.svg$/,
@@ -48,45 +49,29 @@ module.exports = function (env) {
 				},
 				{
 					test: /\.(png|jpg|gif)$/,
-					use: ['url-loader?limit=2000&name=static/img/[name].[hash:5].[ext]'],
-					exclude: "/node_modules/"
+					use: ['url-loader?limit=2048&name=static/img/[name].[hash:5].[ext]'],
+					exclude: /node_modules/
 				},
-				// {
-				// 	test: /\.css$/,
-				// 	loader: 'css?sourceMap&modules&localIdentName=[local]___[hash:base64:5]!!',
-				// 	exclude: /node_modules/
-				// },
 				{
 					test: /\.css$/,
-					loader: 'style-loader!css-loader',
+					use: [
+						'style-loader',
+						'css-loader',
+						'postcss-loader'
+					],
+					exclude: /node_modules\/antd-mobile/
+				},
+				{ // less 编译
+					test: /\.less/,
+					loader: 'style-loader!css-loader?modules!postcss-loader?modules&localIdentName=[name]__[local]-[hash:5]!less-loader',
 					exclude: "/node_modules/"
 				},
 				{
 					test: /\.scss$/,
-					loader: 'style-loader!css-loader!sass-loader',
-					exclude: "/node_modules/"
+					loader: 'style-loader!css-loader?modules!postcss-loader?modules&localIdentName=[name]__[local]-[hash:5]!sass-loader',
+					exclude: /node_modules/
 				}
-
-				// {
-				// 	test: /\.css$/,
-				// 	loader: 'css?sourceMap&modules&localIdentName=[local]___[hash:base64:5]!!',
-				// 	exclude: /node_modules/
-				// },
-				// {
-				// 	test: /\.css$/,
-				// 	use: ["style-loader", "css-loader?modules", "postcss-loader", "sass-loader"],
-				// },
-				// {
-				// 	test: /\.scss$/,
-				// 	use: ["style-loader", "css-loader?modules", "sass-loader"],
-				// 	exclude: ["/node_modules/", path.resolve(__dirname, "../static")]
-				// },
-				// {
-				// 	test: /\.scss$/,
-				// 	use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
-				// 	include: [path.resolve(__dirname, "../static")]
-				// },
 			],
-		},
+		}
 	}
 }
