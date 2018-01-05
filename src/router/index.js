@@ -7,7 +7,6 @@ import createBrowserHistory from 'history/createBrowserHistory'
 
 const browserHistory = createBrowserHistory()
 
-
 import routes from "./routes"
 
 // 按需加载路由
@@ -50,7 +49,7 @@ const RouteConfig = (
 						/>
 					))
 				}
-				{/*<Redirect from='' to='/'/>*/}
+				<Redirect from='**' to='/404'/>
 			</Switch>
 		</Router>
 	</Provider>
