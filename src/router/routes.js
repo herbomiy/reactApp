@@ -20,5 +20,8 @@ export default [
 		path: '/counter',
 		exact: true,
 		component: component.Counter
+	}, {
+		path: '**',
+		component: component.NotFound
 	}
 ]

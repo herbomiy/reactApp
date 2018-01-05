@@ -14,10 +14,6 @@ const baseConfig = require("./webpack.base.config.js");
 const config = require("./config.js");
 const vendor = config.vendor;
 
-//svg
-const svgSpriteDirs = [
-	require.resolve('antd-mobile').replace(/warn\.js$/, ''), // antd-mobile 内置svg
-];
 
 module.exports = function(env) {
 	return webpackMerge(baseConfig(env), {

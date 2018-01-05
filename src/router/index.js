@@ -1,10 +1,10 @@
 import React, {Component} from "react"
-import {Router as BrowserRouter, HashRouter, Route, Link, Switch, Redirect} from "react-router-dom"
-
 import {Provider} from "react-redux"
 import store from "store"
+import {Router as BrowserRouter, HashRouter, Route, Link, Switch, Redirect} from "react-router-dom"
 
 import createBrowserHistory from 'history/createBrowserHistory'
+
 const browserHistory = createBrowserHistory()
 
 
@@ -35,10 +35,10 @@ class ROOT extends Component {
 }
 
 let Router = process.env.NODE_ENV !== 'production' ? BrowserRouter : HashRouter;
-
+Router = HashRouter
 const RouteConfig = (
 	<Provider store={ store }>
-		<Router history={browserHistory}>
+		<Router history={ browserHistory }>
 			<Switch>
 				{
 					routes.map((route, index) => (
