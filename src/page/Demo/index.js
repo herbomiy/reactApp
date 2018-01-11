@@ -6,6 +6,8 @@ import store from 'store';
 import {DEMO_ACTIONS} from "actions";
 import { WhiteSpace, Button} from 'antd-mobile';
 
+import style from './demo.less'
+
 class Demo extends Component {
 	constructor(props) {
 		super(props);
@@ -32,11 +34,11 @@ class Demo extends Component {
 		console.log('this.state = ', this.state)
 		console.log('this.store = ', store.getState())
 		return (
-			<div>
+			<div className={style.demo_container}>
 				<WhiteSpace></WhiteSpace>
-				<h2 style={{textAlign: 'center'}}>测试页面</h2>
+				<h2 style={{textAlign: 'center'}} className={style.title}>测试页面</h2>
 
-				<h2>StoreValue: { store.getState().demoState.value }</h2>
+				<h2>StoreValue: { store.getState().demoState.value } {document.documentElement.clientWidth}</h2>
 				<Button type="primary"  inline size="small"  onClick={demoAdd}>加一</Button>
 				<br/>
 
@@ -49,9 +51,7 @@ class Demo extends Component {
 
 				<Button type="primary"  inline size="small" onClick={e => this.props.history.push('/counter')}>goCounter</Button>
 				<br/>
-
-					<p>中新网1月3日电 据美国中文网报道，2018年的前几天，大部分美国人在寒冷中度过，截至目前，至少已经有8人死于低温严寒。低温仍在持续。</p>
-
+					<p className={style.txtRem}>中新网1月3日电 据美国中文网报道，2018年的前几天，大部分美国人在寒冷中度过，截至目前，至少已经有8人死于低温严寒。低温仍在持续。</p>
 
 					<p>本周, 一场新的暴风雪正在向东南方向移动, 将会给所到之处带来大量降雨和降雪。与此同时, 美国东北部正准备迎接另一场北极冷空气，本周末将出现再一次大幅降温。</p>
 

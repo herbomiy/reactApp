@@ -63,15 +63,15 @@ module.exports = function (env) {
 				},
 				{ // less 编译
 					test: /\.less/,
-					loader: 'style-loader!css-loader?modules!postcss-loader?modules&localIdentName=[name]__[local]-[hash:5]!less-loader',
-					exclude: "/node_modules/"
+					loader: 'style-loader!css-loader?modules&localIdentName=[name]-[local]-[hash:10]!postcss-loader!less-loader',
+					exclude: /node_modules/
 				},
 				{
 					test: /\.scss$/,
-					loader: 'style-loader!css-loader?modules!postcss-loader?modules&localIdentName=[name]__[local]-[hash:5]!sass-loader',
+					loader: 'style-loader!css-loader?modules&localIdentName=[name]__[local]-[hash:10]!postcss-loader!sass-loader',
 					exclude: /node_modules/
 				}
-			],
+			]
 		}
 	}
 }

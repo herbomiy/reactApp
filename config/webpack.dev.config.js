@@ -42,17 +42,22 @@ module.exports = function (env) {
 					},
 					devServer: {
 						historyApiFallback: true, //不跳转
-						inline: true //实时刷新
+						inline: true, //实时刷新
+						hot: true,
+						historyApiFallback: true,
+						port: config.port,
+						host: '0.0.0.0',
+						disableHostCheck: true
 					}
 				}
 			})
 		],
-		// devServer: {
-		// 	hot: true,
-		// 	historyApiFallback: true,
-		// 	port: config.port,
-		// 	host: '0.0.0.0',
-		// 	disableHostCheck: true
-		// }
+		devServer: {
+			hot: true,
+			historyApiFallback: true,
+			port: config.port,
+			host: '0.0.0.0',
+			disableHostCheck: true
+		}
 	})
 }

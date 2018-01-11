@@ -16,13 +16,17 @@ import ROOT from "./router/index"
 // 高清设置
 require('utils/antm-viewport/antm-viewport.min')
 
-// public styles go here
-import "assets/css/reset/common.less";
+
 
 import "assets/css/reset/normalize.scss";
 import "assets/css/common.scss";
 import "assets/css/reset/reset.scss";
-import "assets/css/main.css";
+import "assets/css/utilities/main.less";
+
+// public styles go here
+import "assets/css/reset/common.less";
+import "assets/css/utilities/main.less";
+import "page/Demo/demo.less";
 
 if (module.hot) {
 	module.hot.accept();

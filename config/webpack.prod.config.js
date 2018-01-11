@@ -5,7 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 // old
 const autoprefixer = require("autoprefixer");
-// const precss = require("precss");
+const precss = require("precss");
 
 // new
 const pxtorem = require('postcss-pxtorem');
@@ -27,45 +27,17 @@ module.exports = function(env) {
 		},
 		module: {
 			loaders: [
-        // {
-					// test:/\.jsx?$/,
-					// use:["babel-loader"],
-					// exclude:"/node_modules/"
-        // },
-        // {
-					// test: /\.(png|jpg|gif)$/,
-					// use: ["url-loader?limit=20000&name=[name].[hash:5].[ext]"],
-					// exclude: "/node_modules/"
-        // },
-        // {
-	       //  test: /\.svg$/,
-	       //  loader: 'svg-sprite-loader',
-	       //  include: svgSpriteDirs,
-        // },
-	      // {
-				// 	test: /\.s?css$/,
-				// 	use: ExtractTextPlugin.extract({
-				// 			fallback: "style-loader",
-				// 			use: [
-				// 				"css-loader?minimize&modules&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]",
-				// 		    "sass-loader"
-				// 			]
-				// 		 }),
-				// 	exclude: ["/node_modules/", path.resolve(__dirname,"../static")]
-				// }
-				// {
-		     //  test: /\.s?css$/,
-		     //  use: ExtractTextPlugin.extract({
-			   //    fallback: "style-loader",
-			   //    use: [
-				//       "css-loader?minimize",
-				//       "sass-loader"
-			   //    ]
-		     //  }),
-		     //  exclude: "/node_modules/",
-		     //  include: [path.resolve(__dirname,"../src/assets/css")]
+				// { // less 编译
+				// 	test: /\.less$/,
+				// 	loader: 'style-loader!css-loader?modules&localIdentName=[name]-[local]-[hash:10]!postcss-loader!less-loader',
+				// 	exclude: /node_modules/
 				// },
-      ],
+				// {
+				// 	test: /\.scss$/,
+				// 	loader: 'style-loader!css-loader?modules&localIdentName=[name]__[local]-[hash:10]!postcss-loader!sass-loader',
+				// 	exclude: /node_modules/
+				// }
+			]
 		},
 		plugins:[
 			new webpack.HashedModuleIdsPlugin(), // 优化缓存 - vendor
@@ -108,12 +80,7 @@ module.exports = function(env) {
 			new webpack.LoaderOptionsPlugin({
 				options: {
 					postcss: function () {
-						return [autoprefixer]; // precss,
-					},
-					devServer: {
-						contentBase: "./", //本地服务器所加载的页面所在的目录
-						historyApiFallback: true, //不跳转
-						inline: true //实时刷新
+						return [precss, autoprefixer]; // precss,
 					}
 				}
 			})

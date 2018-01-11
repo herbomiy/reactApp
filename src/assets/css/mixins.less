@@ -1,0 +1,135 @@
+
+// dealing one pixel - start
+// one pixel by background
+.pixel-bottom-bg(@color:#efefef, @pixel: 1px) {
+	background-image: -webkit-linear-gradient(top, @color, @color 50%, transparent 50%);
+	background-image: linear-gradient(180deg, @color, @color 50%, transparent 50%);
+	background-size: 120% @pixel;
+	background-repeat: no-repeat;
+	background-position: bottom left;
+	background-origin: content-box;
+}
+.pixel-top-bg(@color:#efefef, @pixel: 1px) {
+	background-image: -webkit-linear-gradient(top, @color, @color 50%, transparent 50%);
+	background-image: linear-gradient(180deg, @color, @color 50%, transparent 50%);
+	background-size: 120% @pixel;
+	background-repeat: no-repeat;
+	background-position: top left;
+	background-origin: content-box;
+}
+
+// 1px线条 - 伪类方式
+.onePxHei(@color: #efefef, @pixel: 1px) {
+	&:after {
+		position: absolute;
+		left: 0;
+		content: '';
+		bottom: -1px;
+		width: 100%;
+		height: 2px;
+		-webkit-transform: scale(1, .5);
+		transform: scale(1, .5);
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+		background-color: @color;
+	}
+}
+.onePxTop(@color: #efefef) {
+	&:after {
+		position: absolute;
+		top: -1px;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		-webkit-transform: scale(1,.5);
+		transform: scale(1,.5);
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+		content: '';
+		background-color: @color;
+	}
+}
+.onePxRight(@color: #efefef) {
+	&:after {
+		position: absolute;
+		bottom: -1px;
+		left: 0;
+		width: 2px;
+		height: 100%;
+		-webkit-transform: scale(.5,1);
+		transform: scale(.5,1);
+		-webkit-transform-origin: 0 0;
+		transform-origin: 0 0;
+		content: '';
+		background-color: @borColor;
+	}
+}
+// dealing one pixel - end
+
+// 边框 - 圆角
+.border-radius(@radius: 50%) {
+	border-radius: 50%;
+}
+
+// 文本 - 定位 - 中
+.txt-align(@position: left) {
+	text-align: @position;
+}
+
+
+// 文本相关
+.txt-ellipsis(@num: 1) {
+	display: -webkit-box !important;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-break: break-all;
+	-webkit-line-clamp: @num;
+}
+
+// 问本行
+.singleLimitWidth() {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.multiLimitWidth(@num: 2) {
+	display: -webkit-box !important;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: @num;
+}
+
+
+// 位置 - 相对定位
+.relative (@top: auto, @right: auto, @bottom: auto, @left: auto) {
+	position: relative;
+	top: @top;
+	right: @right;
+	bottom: @bottom;
+	left: @left;
+}
+// 位置 - 绝对定位
+.absolute (@top: auto, @right: auto, @bottom: auto, @left: auto, @zIndex: 0) {
+	position: absolute;
+	top: @top;
+	right: @right;
+	bottom: @bottom;
+	left: @left;
+	z-index: @zIndex;
+}
+// 位置 - 固定定位
+.fixed (@top: auto, @right: auto, @bottom: auto, @left: auto, @zIndex: 0) {
+	position: fixed;
+	top: @top;
+	right: @right;
+	bottom: @bottom;
+	left: @left;
+	z-index: @zIndex;
+}
+
+
+

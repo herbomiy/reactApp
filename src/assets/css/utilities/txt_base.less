@@ -11,10 +11,10 @@
 .pull-left{
   float: left;
 }
-.pull-right{
+.pull-right {
   float: right;
 }
-.clear{
+.clear {
   &::after{
     display: block;
     content: '.';
@@ -110,7 +110,7 @@
 }
 
 //文字大小定义
-.font-dpr(@fontSize:12px){
+.font-dpr(@fontSize:12px) {
   font-size: @fontSize;
   [data-dpr = '2'] & {
     font-size: @fontSize*2;
